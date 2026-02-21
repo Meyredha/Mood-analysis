@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mood-a-Meter</title>
+</head>
+<body>
+    <h1>Analyze a mood with AI</h1>
+   
+    <div class="dropdown-container">
+        <p>Select your mood:</p>
+        <select id="moodtype">
+            <option value="">--Choose--</option>
+            <option value="happy">Happy</option>
+            <option value="stress">Stress</option>
+            <option value="angry">Angry</option>
+            <option value="sad">Sad</option>
+        </select>
+        
+        <button id="analyze-btn">Analyze Mood</button>
+    </div>
+
+    <div id="ai-response" style="margin-top: 20px; font-weight: bold;"></div>
+<style>
+  body {
+  background-color: lightblue;
+  text-align: center;
+  margin-top: 150px;
+  font-family: Arial, sans-serif;
+}
+
+.dropdown-container {
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  display: inline-block; /* Keeps the white box small */
+}
+
+button {
+  background-color:grey;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+button:hover {
+  background-color: green;
+}
+</style>
+<script>
+const moodInput=document.getElementById("moodtype");
+const analyzeBtn=document.getElementById("analyze-btn");
+const display=document.getElementById("ai-response");
+
+analyzeBtn.addEventListener("click", async ()=>{   
+  const mood=moodInput.value;
+ if(!mood){
+   display.innerText="please select your mood first"
+ return;
+}
+display.innerText="Wait Ai is analyzing"
+ if (mood === "happy") {
+        display.innerText = "✨ AI Result: Positive energy detected! Keep it up.";
+    } else if (mood === "sad") {
+        display.innerText = "☁️ AI Result: It's okay to feel sad. Take a break.";
+    } else if (mood === "stress") {
+        display.innerText = "🧘 AI Result: Deep breaths. Try a 5-minute meditation.";
+    } else {
+        display.innerText = "🤖 AI Result: Analysis complete. Stay curious!";
+    }
+});
+</script>
+</body>
+</html>
